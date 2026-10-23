@@ -17,11 +17,16 @@
             </button>
             <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
                 <ul class="navbar-nav flex-grow-1">
-                    <li class="nav-item">@Html.ActionLink("Departments", "Index", "Departments", null, new { @class = "nav-link" })</li>
-                    <li class="nav-item">@Html.ActionLink("Instructors", "Index", "Instructors", null, new { @class = "nav-link" })</li>
-                    <li class="nav-item">@Html.ActionLink("Courses", "Index", "Courses", null, new { @class = "nav-link" })</li>
-                    <li class="nav-item">@Html.ActionLink("Students", "Index", "Students", null, new { @class = "nav-link" })</li>
-                    <li class="nav-item">@Html.ActionLink("Enrollments", "Index", "Enrollments", null, new { @class = "nav-link" })</li>
+                    @if (Session["UserName"] != null)
+                    {
+                        <li class="nav-item">@Html.ActionLink("Departments", "Index", "Departments", null, new { @class = "nav-link" })</li>
+                        <li class="nav-item">@Html.ActionLink("Instructors", "Index", "Instructors", null, new { @class = "nav-link" })</li>
+                        <li class="nav-item">@Html.ActionLink("Courses", "Index", "Courses", null, new { @class = "nav-link" })</li>
+                        <li class="nav-item">@Html.ActionLink("Students", "Index", "Students", null, new { @class = "nav-link" })</li>
+                        <li class="nav-item">@Html.ActionLink("Enrollments", "Index", "Enrollments", null, new { @class = "nav-link" })</li>
+                        <li class="nav-item ms-auto"><span class="nav-link">Hello, @Session["FullName"]</span></li>
+                        <li class="nav-item">@Html.ActionLink("Logout", "Logout", "Account", null, new { @class = "nav-link" })</li>
+                    }
                 </ul>
             </div>
         </div>
@@ -37,5 +42,6 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+
 </body>
 </html>
